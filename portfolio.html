@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#05060f">
+  <title>Portfolio | K VIBZ</title>
+  <meta name="description" content="Music, projects and services by Habineza Kevin, K VIBZ — music producer, piano player and hairdressing trainee in Rwanda.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="chatbox.css">
+  <link rel="stylesheet" href="extras.css">
+  <link rel="stylesheet" href="portfolio.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html" class="brand">K <span>VIBZ</span><i>.</i></a>
+
+    <div class="header-ticker" aria-hidden="true">
+      <span class="ticker-dot"></span>
+      <div class="ticker-window">
+        <div class="ticker-track">
+          <span>Music Producer</span>
+          <span>Creative</span>
+          <span>Piano Player</span>
+          <span>Humanities Student</span>
+          <span>Hairdressing Trainee</span>
+          <span>Dreamer</span>
+          <span>Lifelong Learner</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="navigation">
+      <a href="index.html">Welcome</a>
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="portfolio.html" class="active">Portfolio</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-container portfolio-page">
+
+    <!-- 1. HERO -->
+    <section class="pf-hero">
+      <p class="eyebrow">MY WORK</p>
+      <h1>Things I make, play <span class="gradient-text">and learn.</span></h1>
+      <p class="page-description">
+        Music, practical skills and creative projects. Press play, explore my
+        work, and tell me what you'd like to build together.
+      </p>
+      <div class="pf-hero-buttons">
+        <a href="#music" class="btn btn-primary">▶ Listen now</a>
+        <a href="#projects" class="btn btn-outline">See projects</a>
+        <a href="contact.html" class="btn btn-outline">Work with me ↗</a>
+      </div>
+    </section>
+
+    <!-- 2. MUSIC PLAYER -->
+    <section class="pf-section" id="music">
+      <div class="section-head reveal">
+        <p class="eyebrow">LISTEN</p>
+        <h2>My beats &amp; sounds</h2>
+        <p class="page-description">Put your music files in a folder called <b>audio</b> and name them beat-1.mp3, beat-2.mp3 and so on. Edit the titles below.</p>
+      </div>
+
+      <div class="player reveal">
+        <!-- COVER: save as images/cover.jpg -->
+        <figure class="player-cover pf-frame">
+          <img src="images/cover.jpg" alt="Cover art" onerror="this.style.display='none'">
+          <span class="pf-placeholder"><b>♫</b><small>images/cover.jpg</small></span>
+        </figure>
+
+        <div class="player-main">
+          <p class="player-label">NOW PLAYING</p>
+          <h3 class="player-title">Beat 01</h3>
+          <p class="player-meta">Afrobeat · K VIBZ</p>
+
+          <div class="player-eq" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div class="player-seek">
+            <span class="player-time" data-cur>0:00</span>
+            <input class="player-range" type="range" min="0" max="1000" value="0" aria-label="Seek">
+            <span class="player-time" data-dur>0:00</span>
+          </div>
+
+          <div class="player-controls">
+            <button class="pc-btn pc-prev" type="button" aria-label="Previous track">⏮</button>
+            <button class="pc-btn pc-play" type="button" aria-label="Play">▶</button>
+            <button class="pc-btn pc-next" type="button" aria-label="Next track">⏭</button>
+          </div>
+          <p class="player-status" role="status"></p>
+        </div>
+      </div>
+
+      <!-- TRACK LIST: change data-title, data-meta and data-src -->
+      <div class="tracklist reveal">
+        <button class="track active" type="button" data-src="audio/beat-1.mp3" data-title="Beat 01" data-meta="Afrobeat · K VIBZ">
+          <span class="track-num">01</span>
+          <span class="track-info"><strong>Beat 01</strong><small>Afrobeat</small></span>
+          <span class="track-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+        <button class="track" type="button" data-src="audio/beat-2.mp3" data-title="Beat 02" data-meta="Afro-kompa · K VIBZ">
+          <span class="track-num">02</span>
+          <span class="track-info"><strong>Beat 02</strong><small>Afro-kompa</small></span>
+          <span class="track-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+        <button class="track" type="button" data-src="audio/beat-3.mp3" data-title="Piano Idea 01" data-meta="Piano · K VIBZ">
+          <span class="track-num">03</span>
+          <span class="track-info"><strong>Piano Idea 01</strong><small>Piano</small></span>
+          <span class="track-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+        <button class="track" type="button" data-src="audio/beat-4.mp3" data-title="Beat 04" data-meta="Afrobeat · K VIBZ">
+          <span class="track-num">04</span>
+          <span class="track-info"><strong>Beat 04</strong><small>Afrobeat</small></span>
+          <span class="track-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 3. PROJECTS -->
+    <section class="pf-section" id="projects">
+      <div class="section-head reveal">
+        <p class="eyebrow">PROJECTS</p>
+        <h2>Work I'm proud of</h2>
+        <p class="page-description">Click a photo to see it large. Replace the pictures and text with your own projects.</p>
+      </div>
+
+      <div class="filter-bar reveal" role="group" aria-label="Filter projects">
+        <button class="filter-btn active" type="button" data-filter="all">All</button>
+        <button class="filter-btn" type="button" data-filter="music">Music</button>
+        <button class="filter-btn" type="button" data-filter="hair">Hairdressing</button>
+        <button class="filter-btn" type="button" data-filter="writing">Writing</button>
+        <button class="filter-btn" type="button" data-filter="community">Community</button>
+      </div>
+
+      <div class="work-grid">
+        <article class="work-card reveal" data-category="music" style="--delay:0s">
+          <figure class="work-image pf-frame">
+            <img src="images/project-1.jpg" alt="Beat making in Logic Pro" onerror="this.style.display='none'">
+            <span class="pf-placeholder"><b>＋</b><small>images/project-1.jpg</small></span>
+          </figure>
+          <div class="work-body">
+            <span class="work-tag">MUSIC</span>
+            <h3>Beat Making in Logic Pro</h3>
+            <p>Arranging drums, bass and chords, choosing sounds and learning the basics of mixing.</p>
+          </div>
+        </article>
+
+        <article class="work-card reveal" data-category="music" style="--delay:0.1s">
+          <figure class="work-image pf-frame">
+            <img src="images/project-2.jpg" alt="Piano melodies and chords" onerror="this.style.display='none'">
+            <span class="pf-placeholder"><b>＋</b><small>images/project-2.jpg</small></span>
+          </figure>
+          <div class="work-body">
+            <span class="work-tag">MUSIC</span>
+            <h3>Piano Melodies &amp; Chords</h3>
+            <p>Exploring chords and melodies on the piano, then using them as the starting point for songs.</p>
+          </div>
+        </article>
+
+        <article class="work-card reveal" data-category="music" style="--delay:0.2s">
+          <figure class="work-image pf-frame">
+            <img src="images/project-3.jpg" alt="Afrobeat and Afro-kompa experiments" onerror="this.style.display='none'">
+            <span class="pf-placeholder"><b>＋</b><small>images/project-3.jpg</small></span>
+          </figure>
+          <div class="work-body">
+            <span class="work-tag">MUSIC</span>
+            <h3>Afrobeat &amp; Afro-kompa Sketches</h3>
+            <p>Trying out rhythms and grooves from the styles I love, one small idea at a time.</p>
+          </div>
+        </article>
+
+        <article class="work-card reveal" data-category="hair" style="--delay:0s">
+          <figure class="work-image pf-frame">
+            <img src="images/project-4.jpg" alt="Hairdressing practice" onerror="this.style.display='none'">
+            <span class="pf-placeholder"><b>＋</b><small>images/project-4.jpg</small></span>
+          </figure>
+          <div class="work-body">
+            <span class="work-tag">HAIRDRESSING</span>
+            <h3>Hairdressing Practice</h3>
+            <p>Building practical techniques, attention to detail and a professional approach to service.</p>
+          </div>
+        </article>
+
+        <article class="work-card reveal" data-category="writing" style="--delay:0.1s">
+          <figure class="work-image pf-frame">
+            <img src="images/project-5.jpg" alt="Research and writing" onerror="this.style.display='none'">
+            <span class="pf-placeholder"><b>＋</b><small>images/project-5.jpg</small></span>
+          </figure>
+          <div class="work-body">
+            <span class="work-tag">WRITING</span>
+            <h3>Research &amp; Writing</h3>
+            <p>Work from my History, Geography and Literature studies: reading, researching and interpreting.</p>
+          </div>
+        </article>
+
+        <article class="work-card reveal" data-category="community" style="--delay:0.2s">
+          <figure class="work-image pf-frame">
+            <img src="images/project-6.jpg" alt="Community and teamwork" onerror="this.style.display='none'">
+            <span class="pf-placeholder"><b>＋</b><small>images/project-6.jpg</small></span>
+          </figure>
+          <div class="work-body">
+            <span class="work-tag">COMMUNITY</span>
+            <h3>Community &amp; Teamwork</h3>
+            <p>Group activities and projects that taught me patience, communication and responsibility.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4. SERVICES -->
+    <section class="pf-section">
+      <div class="section-head reveal">
+        <p class="eyebrow">WORK WITH ME</p>
+        <h2>How I can help</h2>
+        <p class="page-description">Pick one and your message will start with the right topic.</p>
+      </div>
+
+      <div class="service-grid">
+        <a class="service reveal" href="contact.html?topic=music" style="--delay:0s">
+          <span class="service-icon">🎧</span>
+          <h3>Music &amp; collaboration</h3>
+          <p>Beats, ideas and creative projects. Tell me the style and the vibe.</p>
+          <b>Message me ↗</b>
+        </a>
+        <a class="service reveal" href="contact.html?topic=hair" style="--delay:0.1s">
+          <span class="service-icon">✂️</span>
+          <h3>Hairdressing</h3>
+          <p>Ask about services or booking. I'm training and always improving.</p>
+          <b>Message me ↗</b>
+        </a>
+        <a class="service reveal" href="contact.html?topic=business" style="--delay:0.2s">
+          <span class="service-icon">💼</span>
+          <h3>Opportunities</h3>
+          <p>Projects, events or ideas that fit my skills. Share the details.</p>
+          <b>Message me ↗</b>
+        </a>
+        <a class="service reveal" href="contact.html?topic=hello" style="--delay:0.3s">
+          <span class="service-icon">👋</span>
+          <h3>Just say hello</h3>
+          <p>A question, advice or encouragement is always welcome.</p>
+          <b>Message me ↗</b>
+        </a>
+      </div>
+    </section>
+
+    <!-- 5. JOURNEY -->
+    <section class="pf-section">
+      <div class="section-head reveal">
+        <p class="eyebrow">MY PATH</p>
+        <h2>Where I am and where I'm going</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item reveal" style="--delay:0s">
+          <span class="tl-dot"></span>
+          <p class="tl-when">NOW</p>
+          <h3>Learning in every direction</h3>
+          <p>Studying History, Geography and Literature, learning to produce music with Logic Pro, and training in hairdressing.</p>
+        </div>
+        <div class="tl-item reveal" style="--delay:0.12s">
+          <span class="tl-dot"></span>
+          <p class="tl-when">2027</p>
+          <h3>Graduation</h3>
+          <p>Finishing school at Agahozo Shalom Youth Village and moving toward the next step.</p>
+        </div>
+        <div class="tl-item reveal" style="--delay:0.24s">
+          <span class="tl-dot"></span>
+          <p class="tl-when">NEXT</p>
+          <h3>A career with purpose</h3>
+          <p>Building a future in music production or hairdressing, or both, and learning from people along the way.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CV -->
+    <section class="cv-card reveal">
+      <div>
+        <p class="eyebrow">DOWNLOAD</p>
+        <h2>My CV</h2>
+        <p class="page-description">A short summary of my education, skills and goals.</p>
+      </div>
+      <a class="btn btn-primary" href="files/kevin-cv.pdf" download>⬇ Download CV</a>
+    </section>
+
+    <!-- 7. CALL TO ACTION -->
+    <section class="pf-cta reveal">
+      <h2>Have an idea? Let's make it real.</h2>
+      <p class="page-description">Tell me what you have in mind and I'll get back to you.</p>
+      <a href="contact.html" class="btn btn-primary">Contact me ↗</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 K VIBZ · Habineza Kevin</p>
+    <p>LEARN. CREATE. GROW.</p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+  <script src="chatbox.js"></script>
+  <script src="extras.js"></script>
+  <script src="portfolio.js"></script>
+</body>
+</html>

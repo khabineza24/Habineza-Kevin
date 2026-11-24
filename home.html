@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070a14">
+  <title>Home | K VIBZ</title>
+  <meta name="description" content="Home of Habineza Kevin, K VIBZ — music, learning, creativity and practical skills.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="chatbox.css">
+  <link rel="stylesheet" href="extras.css">
+  <link rel="stylesheet" href="home.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html" class="brand">K <span>VIBZ</span><i>.</i></a>
+
+    <div class="header-ticker" aria-hidden="true">
+      <span class="ticker-dot"></span>
+      <div class="ticker-window">
+        <div class="ticker-track">
+          <span>Music Producer</span>
+          <span>Creative</span>
+          <span>Piano Player</span>
+          <span>Humanities Student</span>
+          <span>Hairdressing Trainee</span>
+          <span>Dreamer</span>
+          <span>Lifelong Learner</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="navigation">
+      <a href="index.html">Welcome</a>
+      <a href="home.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="home-page">
+
+    <!-- 1. HERO -->
+    <section class="home-hero">
+      <div class="home-hero-copy">
+        <p class="eyebrow">HELLO, I'M KEVIN</p>
+        <h1 class="home-title">
+          I turn <span class="gradient-text">sound, ideas and skills</span> into something real.
+        </h1>
+        <p class="page-description">
+          I'm Habineza Kevin, known as K VIBZ. I produce music, play the piano,
+          study humanities and train in hairdressing. This page is a quick tour
+          of who I am and what I'm building.
+        </p>
+        <div class="home-buttons">
+          <a href="portfolio.html" class="btn btn-primary">See my work ↗</a>
+          <a href="contact.html" class="btn btn-outline">Say hello</a>
+        </div>
+      </div>
+
+      <!-- Music visual: equalizer + playable piano -->
+      <div class="home-visual music-visual">
+        <div class="visual-top">
+          <span class="live-dot"></span>
+          <span>NOW PLAYING · K VIBZ SESSIONS</span>
+        </div>
+
+        <div class="equalizer" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <div class="piano" role="group" aria-label="Playable piano keys">
+          <button class="key white" data-note="261.63" aria-label="C"></button>
+          <button class="key white" data-note="293.66" aria-label="D"></button>
+          <button class="key white" data-note="329.63" aria-label="E"></button>
+          <button class="key white" data-note="349.23" aria-label="F"></button>
+          <button class="key white" data-note="392.00" aria-label="G"></button>
+          <button class="key white" data-note="440.00" aria-label="A"></button>
+          <button class="key white" data-note="493.88" aria-label="B"></button>
+          <button class="key white" data-note="523.25" aria-label="High C"></button>
+
+          <button class="key black" style="left:9%"  data-note="277.18" aria-label="C sharp"></button>
+          <button class="key black" style="left:21.5%" data-note="311.13" aria-label="D sharp"></button>
+          <button class="key black" style="left:46.5%" data-note="369.99" aria-label="F sharp"></button>
+          <button class="key black" style="left:59%"  data-note="415.30" aria-label="G sharp"></button>
+          <button class="key black" style="left:71.5%" data-note="466.16" aria-label="A sharp"></button>
+        </div>
+        <button class="vibe-btn" type="button" aria-pressed="false"><span>▶</span> Play a vibe</button>
+        <p class="visual-hint">Tap the keys, or use your keyboard: A S D F G H J K</p>
+      </div>
+    </section>
+
+    <!-- 2. SCROLLING WORD STRIP -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Music Production</span><i>✦</i>
+        <span>Piano</span><i>✦</i>
+        <span>Humanities</span><i>✦</i>
+        <span>Hairdressing</span><i>✦</i>
+        <span>Creative Learning</span><i>✦</i>
+        <span>Music Production</span><i>✦</i>
+        <span>Piano</span><i>✦</i>
+        <span>Humanities</span><i>✦</i>
+        <span>Hairdressing</span><i>✦</i>
+        <span>Creative Learning</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- 3. ROTATING PHOTO RING (turns clockwise) -->
+    <section class="ring-section">
+      <div class="section-head reveal">
+        <p class="eyebrow">MY WORLD IN MOTION</p>
+        <h2>Moments from my journey</h2>
+        <p class="page-description">Drag, swipe or use the arrows to spin the ring. Click the front photo to see it large.</p>
+      </div>
+
+      <div class="ring-scene reveal" tabindex="0" aria-label="Rotating photo gallery. Use the left and right arrow keys to turn it.">
+        <div class="ring">
+          <!-- PHOTOS: save your pictures as images/ring-1.jpg ... images/ring-8.jpg
+               Change data-caption to describe each photo. -->
+          <figure class="ring-card" data-caption="Music sessions">
+            <img src="images/ring-1.jpg" alt="Music sessions" draggable="false" onerror="this.style.display='none'">
+            <span class="ring-placeholder"><b>＋</b><small>images/ring-1.jpg</small></span>
+          </figure>
+          <figure class="ring-card" data-caption="At the piano">
+            <img src="images/ring-2.jpg" alt="At the piano" draggable="false" onerror="this.style.display='none'">
+            <span class="ring-placeholder"><b>＋</b><small>images/ring-2.jpg</small></span>
+          </figure>
+          <figure class="ring-card" data-caption="Hairdressing practice">
+            <img src="images/ring-3.jpg" alt="Hairdressing practice" draggable="false" onerror="this.style.display='none'">
+            <span class="ring-placeholder"><b>＋</b><small>images/ring-3.jpg</small></span>
+          </figure>
+          <figure class="ring-card" data-caption="In class">
+            <img src="images/ring-4.jpg" alt="In class" draggable="false" onerror="this.style.display='none'">
+            <span class="ring-placeholder"><b>＋</b><small>images/ring-4.jpg</small></span>
+          </figure>
+          <figure class="ring-card" data-caption="Community">
+            <img src="images/ring-5.jpg" alt="Community" draggable="false" onerror="this.style.display='none'">
+            <span class="ring-placeholder"><b>＋</b><small>images/ring-5.jpg</small></span>
+          </figure>
+          <figure class="ring-card" data-caption="Creative moments">
+            <img src="images/ring-6.jpg" alt="Creative moments" draggable="false" onerror="this.style.display='none'">
+            <span class="ring-placeholder"><b>＋</b><small>images/ring-6.jpg</small></span>
+          </figure>
+          <figure class="ring-card" data-caption="Learning every day">
+            <img src="images/ring-7.jpg" alt="Learning every day" draggable="false" onerror="this.style.display='none'">
+            <span class="ring-placeholder"><b>＋</b><small>images/ring-7.jpg</small></span>
+          </figure>
+          <figure class="ring-card" data-caption="Good vibes">
+            <img src="images/ring-8.jpg" alt="Good vibes" draggable="false" onerror="this.style.display='none'">
+            <span class="ring-placeholder"><b>＋</b><small>images/ring-8.jpg</small></span>
+          </figure>
+        </div>
+      </div>
+
+      <div class="ring-controls">
+        <button class="ring-btn ring-prev" type="button" aria-label="Previous photo">‹</button>
+        <button class="ring-btn ring-pause" type="button" aria-label="Pause rotation" aria-pressed="false">❚❚</button>
+        <button class="ring-btn ring-next" type="button" aria-label="Next photo">›</button>
+      </div>
+      <p class="ring-caption" aria-live="polite"></p>
+    </section>
+
+    <!-- 4. COUNT-UP NUMBERS -->
+    <section class="stats reveal">
+      <div class="stat">
+        <strong data-count="5">0</strong>
+        <span>Passions I follow</span>
+      </div>
+      <div class="stat">
+        <strong data-count="88">0</strong>
+        <span>Piano keys that inspire me</span>
+      </div>
+      <div class="stat">
+        <strong data-count="1">0</strong>
+        <span>Dream: build with purpose</span>
+      </div>
+    </section>
+
+    <!-- 4. WHAT I FOCUS ON -->
+    <section class="home-section">
+      <div class="section-head reveal">
+        <p class="eyebrow">WHAT I DO</p>
+        <h2>Four sides of K VIBZ</h2>
+        <p class="page-description">Different paths, one idea: keep learning, keep creating.</p>
+      </div>
+
+      <div class="focus-grid">
+        <article class="focus-card reveal" style="--delay:0s">
+          <span class="focus-icon">♫</span>
+          <h3>Music Production</h3>
+          <p>Building beats and sounds from simple ideas, and learning something new in every session.</p>
+        </article>
+
+        <article class="focus-card reveal" style="--delay:0.12s">
+          <span class="focus-icon">♪</span>
+          <h3>Piano</h3>
+          <p>Melody is where my music starts. The piano keeps my ear sharp and my creativity moving.</p>
+        </article>
+
+        <article class="focus-card reveal" style="--delay:0.24s">
+          <span class="focus-icon">✎</span>
+          <h3>Humanities</h3>
+          <p>Studying people, history and ideas helps me understand the stories behind what I create.</p>
+        </article>
+
+        <article class="focus-card reveal" style="--delay:0.36s">
+          <span class="focus-icon">✂</span>
+          <h3>Hairdressing</h3>
+          <p>A practical skill I'm training in, where patience, detail and style come together.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5. QUOTE -->
+    <section class="quote-band reveal">
+      <p class="quote-mark">“</p>
+      <blockquote>Every skill tells a story. Every idea has a purpose.</blockquote>
+      <p class="quote-by">— K VIBZ</p>
+    </section>
+
+    <!-- 6. EXPLORE -->
+    <section class="home-section">
+      <div class="section-head reveal">
+        <p class="eyebrow">KEEP EXPLORING</p>
+        <h2>Where to next?</h2>
+      </div>
+
+      <div class="explore-grid">
+        <a href="about.html" class="explore-card reveal" style="--delay:0s">
+          <span>About me</span>
+          <p>My story, values and what drives me.</p>
+          <b>↗</b>
+        </a>
+        <a href="skills.html" class="explore-card reveal" style="--delay:0.12s">
+          <span>Skills</span>
+          <p>What I can do and what I'm learning.</p>
+          <b>↗</b>
+        </a>
+        <a href="portfolio.html" class="explore-card reveal" style="--delay:0.24s">
+          <span>Portfolio</span>
+          <p>Projects and work I'm proud of.</p>
+          <b>↗</b>
+        </a>
+      </div>
+    </section>
+
+    <!-- 7. CALL TO ACTION -->
+    <section class="cta-band reveal">
+      <h2>Let's create something together.</h2>
+      <p class="page-description">Have an idea, a project or a question? I'd love to hear from you.</p>
+      <a href="contact.html" class="btn btn-primary">Contact me ↗</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 K VIBZ · Habineza Kevin</p>
+    <p>LEARN. CREATE. GROW.</p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+  <script src="chatbox.js"></script>
+  <script src="extras.js"></script>
+  <script src="home.js"></script>
+</body>
+</html>

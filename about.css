@@ -1,0 +1,489 @@
+/* ==========================================
+   K VIBZ — ABOUT PAGE ONLY (about.html)
+   Load AFTER styles.css
+========================================== */
+
+.about-page {
+    display: flex;
+    flex-direction: column;
+    gap: 90px;
+}
+
+/* ---------- Scroll reveal (needs script.js) ---------- */
+
+.js .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: var(--delay, 0s);
+}
+
+.js .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================
+   1. PHOTO FRAMES (used everywhere on this page)
+   Put your photos in an "images" folder next to about.html
+========================================== */
+
+.photo-frame {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    background:
+        radial-gradient(circle at 30% 20%, rgba(155, 109, 255, 0.28), transparent 60%),
+        radial-gradient(circle at 80% 85%, rgba(85, 230, 245, 0.16), transparent 55%),
+        rgba(14, 19, 38, 0.85);
+    border: 1px solid rgba(157, 177, 225, 0.25);
+    border-radius: 22px;
+    box-shadow:
+        0 18px 44px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Your photo sits on top of the placeholder */
+.photo-frame img {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+    transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.photo-frame:hover img {
+    transform: scale(1.06);
+    filter: saturate(1.12);
+}
+
+/* Shown only until a photo is added */
+.photo-placeholder {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 16px;
+
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.photo-placeholder b {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    margin-bottom: 6px;
+
+    border: 1px dashed rgba(155, 109, 255, 0.6);
+    border-radius: 50%;
+    color: var(--cyan);
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.photo-placeholder small {
+    color: #7c88a6;
+    font-size: 11px;
+}
+
+/* Portrait photo (hero) */
+
+.portrait {
+    aspect-ratio: 4 / 5;
+    max-height: 560px;
+    width: 100%;
+    justify-self: center;
+    animation: riseIn 1s 0.25s ease both;
+}
+
+/* Offset outline behind the portrait */
+.portrait::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: 22px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.photo-badge {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    z-index: 3;
+    padding: 8px 14px;
+
+    background: rgba(8, 11, 24, 0.82);
+    border: 1px solid rgba(155, 109, 255, 0.45);
+    border-radius: 999px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+/* Landscape photos beside text */
+
+.wide {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+}
+
+/* ==========================================
+   2. HERO
+========================================== */
+
+.about-hero {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+    gap: 60px;
+}
+
+.about-hero-copy > * {
+    animation: riseIn 0.9s ease both;
+}
+.about-hero-copy > :nth-child(1) { animation-delay: 0.05s; }
+.about-hero-copy > :nth-child(2) { animation-delay: 0.2s; }
+.about-hero-copy > :nth-child(3) { animation-delay: 0.35s; }
+.about-hero-copy > :nth-child(4) { animation-delay: 0.5s; }
+
+.about-hero h1 {
+    margin: 14px 0 22px;
+    font-size: clamp(36px, 5vw, 62px);
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+}
+
+.chip {
+    padding: 9px 16px;
+
+    background: rgba(155, 109, 255, 0.1);
+    border: 1px solid rgba(155, 109, 255, 0.35);
+    border-radius: 999px;
+
+    color: #e5eaff;
+    font-size: 13px;
+    font-weight: 600;
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.chip:hover {
+    transform: translateY(-3px);
+    background: rgba(155, 109, 255, 0.2);
+}
+
+/* ==========================================
+   3. TEXT + PHOTO ROWS
+========================================== */
+
+.about-split {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 40px;
+}
+
+.about-split.reverse {
+    grid-template-columns: 0.9fr 1.1fr;
+}
+
+.about-block {
+    padding: 36px 34px;
+}
+
+.about-block h2 {
+    margin: 8px 0 18px;
+    font-size: clamp(26px, 3.4vw, 36px);
+    letter-spacing: -0.6px;
+}
+
+.about-block p {
+    color: var(--muted);
+    font-size: 15.5px;
+    line-height: 1.9;
+}
+
+.about-block p + p {
+    margin-top: 14px;
+}
+
+/* ==========================================
+   4. SECTION HEADINGS
+========================================== */
+
+.about-section {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+}
+
+.section-head h2 {
+    margin: 8px 0 10px;
+    font-size: clamp(28px, 4vw, 40px);
+    letter-spacing: -0.8px;
+}
+
+/* ==========================================
+   5. QUICK FACTS
+========================================== */
+
+.facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.fact {
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    background: rgba(14, 19, 38, 0.72);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--purple);
+    border-radius: 14px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.fact:hover {
+    transform: translateY(-5px);
+    border-left-color: var(--cyan);
+}
+
+.fact-label {
+    color: var(--cyan);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.fact strong {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 19px;
+    line-height: 1.35;
+}
+
+/* ==========================================
+   6. GALLERY
+========================================== */
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 230px;
+    gap: 18px;
+}
+
+.gallery-item {
+    border-radius: 18px;
+}
+
+.gallery-item.tall {
+    grid-row: span 2;
+}
+
+.gallery-item.wide-item {
+    grid-column: span 2;
+}
+
+.gallery-item figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    padding: 28px 16px 14px;
+
+    background: linear-gradient(to top, rgba(5, 6, 15, 0.9), transparent);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+
+    transform: translateY(8px);
+    opacity: 0;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.gallery-item:hover figcaption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* ==========================================
+   7. VALUES  (numbered cards)
+========================================== */
+
+.values-grid {
+    counter-reset: value;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.values-grid > div {
+    counter-increment: value;
+    position: relative;
+    padding: 34px 26px 28px;
+    transition: transform 0.35s ease, border-color 0.25s ease;
+}
+
+.values-grid > div::before {
+    content: "0" counter(value);
+    display: block;
+    margin-bottom: 14px;
+
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(110deg, var(--purple), var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.values-grid > div:hover {
+    transform: translateY(-8px);
+    border-color: rgba(155, 109, 255, 0.55);
+}
+
+.values-grid h3 {
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.values-grid p {
+    color: var(--muted);
+    font-size: 14.5px;
+    line-height: 1.75;
+}
+
+/* ==========================================
+   8. WHAT'S NEXT
+========================================== */
+
+.about-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 56px 24px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+
+.about-cta h2 {
+    font-size: clamp(26px, 4vw, 40px);
+    letter-spacing: -0.8px;
+}
+
+.cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+/* ==========================================
+   9. ANIMATION
+========================================== */
+
+@keyframes riseIn {
+    from { opacity: 0; transform: translateY(26px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-hero-copy > *,
+    .portrait {
+        animation: none;
+    }
+
+    .js .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ==========================================
+   10. TABLETS AND PHONES
+========================================== */
+
+@media (max-width: 900px) {
+    .about-page {
+        gap: 70px;
+    }
+
+    .about-hero,
+    .about-split,
+    .about-split.reverse {
+        grid-template-columns: 1fr;
+        gap: 34px;
+    }
+
+    .portrait {
+        max-width: 420px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 200px;
+    }
+
+    .gallery-item.wide-item {
+        grid-column: span 2;
+    }
+
+    /* No hover on touch screens: always show captions */
+    .gallery-item figcaption {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-block {
+        padding: 26px 22px;
+    }
+
+    .cta-buttons .btn {
+        flex: 1 1 100%;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 220px;
+    }
+
+    .gallery-item.tall,
+    .gallery-item.wide-item {
+        grid-row: auto;
+        grid-column: auto;
+    }
+}

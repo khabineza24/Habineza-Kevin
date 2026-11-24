@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#05060f">
+  <title>Contact | K VIBZ</title>
+  <meta name="description" content="Contact Habineza Kevin, K VIBZ — for music collaboration, hairdressing, opportunities or just to say hello.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="chatbox.css">
+  <link rel="stylesheet" href="extras.css">
+  <link rel="stylesheet" href="contact.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html" class="brand">K <span>VIBZ</span><i>.</i></a>
+
+    <div class="header-ticker" aria-hidden="true">
+      <span class="ticker-dot"></span>
+      <div class="ticker-window">
+        <div class="ticker-track">
+          <span>Music Producer</span>
+          <span>Creative</span>
+          <span>Piano Player</span>
+          <span>Humanities Student</span>
+          <span>Hairdressing Trainee</span>
+          <span>Dreamer</span>
+          <span>Lifelong Learner</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="navigation">
+      <a href="index.html">Welcome</a>
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="skills.html">Skills</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-container contact-page">
+
+    <section class="ct-hero">
+      <p class="eyebrow">GET IN TOUCH</p>
+      <h1>Let's talk, <span class="gradient-text">let's create.</span></h1>
+      <p class="page-description">
+        Whether it's a music idea, a hairdressing question, an opportunity or
+        just a hello, write your message below and send it straight to me.
+      </p>
+    </section>
+
+    <div class="ct-layout">
+
+      <!-- LEFT: ways to reach me + questions -->
+      <aside class="ct-side">
+        <div class="ct-methods" id="methods">
+          <div class="ct-method">
+            <span class="ct-icon">📍</span>
+            <div><small>BASED IN</small><strong>Rwanda 🇷🇼</strong></div>
+          </div>
+          <!-- WhatsApp, Email and Instagram cards appear here automatically
+               when you fill in config.js -->
+        </div>
+
+        <div class="ct-faq">
+          <h2>Quick answers</h2>
+          <details>
+            <summary>What can I message you about?</summary>
+            <p>Music collaboration, hairdressing services, projects and opportunities, or any question about my work.</p>
+          </details>
+          <details>
+            <summary>Can I book a hairdressing service?</summary>
+            <p>Yes. Choose "Hairdressing" as the topic, tell me what you need, and I'll reply with the details.</p>
+          </details>
+          <details>
+            <summary>Can we make music together?</summary>
+            <p>I'd love that. Choose "Music" and describe the style, the vibe and what you want to achieve.</p>
+          </details>
+        </div>
+      </aside>
+
+      <!-- RIGHT: the form -->
+      <form class="contact-form ct-form reveal" id="contactForm" novalidate>
+        <h2>Send a message</h2>
+
+        <label for="cName">Your name</label>
+        <input id="cName" name="name" type="text" autocomplete="name" placeholder="e.g. Amina" maxlength="60" required>
+        <p class="ct-error" data-for="cName"></p>
+
+        <label for="cContact">Your email or phone <span>(optional)</span></label>
+        <input id="cContact" name="contact" type="text" autocomplete="email" placeholder="so I can reply to you" maxlength="80">
+
+        <label for="cTopic">What is it about?</label>
+        <select id="cTopic" name="topic">
+          <option value="music">🎧 Music &amp; collaboration</option>
+          <option value="hair">✂️ Hairdressing</option>
+          <option value="business">💼 Opportunities &amp; projects</option>
+          <option value="hello">👋 Just saying hello</option>
+        </select>
+
+        <label for="cMessage">Your message</label>
+        <textarea id="cMessage" name="message" rows="6" placeholder="Write your message here..." maxlength="500" required></textarea>
+        <div class="ct-counter"><p class="ct-error" data-for="cMessage"></p><span id="cCount">0 / 500</span></div>
+
+        <div class="ct-actions">
+          <button type="button" class="btn btn-primary" id="sendWhatsApp" hidden>Send on WhatsApp ↗</button>
+          <button type="button" class="btn btn-primary" id="sendEmail" hidden>Send by email ↗</button>
+          <button type="button" class="btn btn-outline" id="copyMsg">Copy my message</button>
+        </div>
+
+        <p class="ct-status" id="ctStatus" role="status"></p>
+        <p class="ct-setup" id="ctSetup" hidden>
+          Setup tip (only you see this while testing): open <b>config.js</b> and add your WhatsApp or email to turn on the send buttons.
+        </p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 K VIBZ · Habineza Kevin</p>
+    <p>LEARN. CREATE. GROW.</p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+  <script src="chatbox.js"></script>
+  <script src="extras.js"></script>
+  <script src="contact.js"></script>
+</body>
+</html>

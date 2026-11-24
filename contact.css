@@ -1,0 +1,311 @@
+/* ==========================================
+   K VIBZ — CONTACT PAGE ONLY (contact.html)
+   Load AFTER styles.css
+========================================== */
+
+.contact-page {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+/* ---------- Scroll reveal (needs script.js) ---------- */
+
+.js .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.js .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---------- Hero ---------- */
+
+.ct-hero > * {
+    animation: riseIn 0.9s ease both;
+}
+.ct-hero > :nth-child(1) { animation-delay: 0.05s; }
+.ct-hero > :nth-child(2) { animation-delay: 0.2s; }
+.ct-hero > :nth-child(3) { animation-delay: 0.35s; }
+
+.ct-hero h1 {
+    margin: 14px 0 22px;
+    font-size: clamp(36px, 5vw, 62px);
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+}
+
+/* ---------- Layout ---------- */
+
+.ct-layout {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 36px;
+    align-items: start;
+}
+
+.ct-side {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    animation: riseIn 0.9s 0.3s ease both;
+}
+
+/* ---------- Contact methods ---------- */
+
+.ct-methods {
+    display: grid;
+    gap: 14px;
+}
+
+.ct-method {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+
+    background: rgba(14, 19, 38, 0.72);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.ct-method:hover {
+    transform: translateX(6px);
+    border-color: rgba(155, 109, 255, 0.55);
+}
+
+.ct-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: rgba(155, 109, 255, 0.15);
+    border: 1px solid rgba(155, 109, 255, 0.35);
+    border-radius: 13px;
+    font-size: 22px;
+}
+
+.ct-method small {
+    display: block;
+    color: var(--cyan);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.ct-method strong {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    overflow-wrap: anywhere;
+}
+
+.ct-method a:hover strong {
+    color: var(--cyan);
+}
+
+/* ---------- Questions ---------- */
+
+.ct-faq h2 {
+    margin-bottom: 14px;
+    font-size: 24px;
+}
+
+.ct-faq details {
+    margin-bottom: 10px;
+    background: rgba(14, 19, 38, 0.6);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    transition: border-color 0.25s ease;
+}
+
+.ct-faq details[open] {
+    border-color: rgba(155, 109, 255, 0.5);
+}
+
+.ct-faq summary {
+    padding: 15px 18px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    list-style: none;
+}
+
+.ct-faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.ct-faq summary::after {
+    content: "+";
+    float: right;
+    color: var(--cyan);
+    font-size: 20px;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+.ct-faq details[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.ct-faq details p {
+    padding: 0 18px 16px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+/* ---------- Form ---------- */
+
+.ct-form {
+    padding: 34px 32px;
+    background-color: rgba(14, 19, 38, 0.8);
+}
+
+.ct-form h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    letter-spacing: -0.5px;
+}
+
+.ct-form label {
+    display: block;
+    margin: 18px 0 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #dfe4fa;
+}
+
+.ct-form label span {
+    color: var(--muted);
+    font-weight: 400;
+}
+
+.ct-form input,
+.ct-form select,
+.ct-form textarea {
+    display: block;
+    width: 100%;
+    padding: 13px 15px;
+    font-size: 16px;
+}
+
+.ct-form textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.ct-form select option {
+    background: #0e1326;
+    color: #f4f5ff;
+}
+
+.ct-form .has-error {
+    border-color: #f87171;
+}
+
+.ct-error {
+    min-height: 1.2em;
+    margin-top: 6px;
+    color: #fca5a5;
+    font-size: 12.5px;
+}
+
+.ct-counter {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.ct-counter span {
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+}
+
+.ct-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 22px;
+}
+
+.ct-actions .btn[hidden] {
+    display: none;
+}
+
+.ct-status {
+    min-height: 1.4em;
+    margin-top: 16px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.ct-status.ok {
+    color: #86efac;
+}
+
+.ct-status.bad {
+    color: #fca5a5;
+}
+
+.ct-setup {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: rgba(250, 204, 21, 0.08);
+    border: 1px dashed rgba(250, 204, 21, 0.45);
+    border-radius: 12px;
+    color: #fde68a;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.ct-setup[hidden] {
+    display: none;
+}
+
+/* ---------- Animation ---------- */
+
+@keyframes riseIn {
+    from { opacity: 0; transform: translateY(26px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ct-hero > *,
+    .ct-side {
+        animation: none;
+    }
+
+    .js .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ---------- Tablets and phones ---------- */
+
+@media (max-width: 900px) {
+    .ct-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .ct-form {
+        order: -1;
+    }
+}
+
+@media (max-width: 600px) {
+    .ct-form {
+        padding: 26px 20px;
+    }
+
+    .ct-actions .btn {
+        flex: 1 1 100%;
+    }
+}
