@@ -1,0 +1,564 @@
+/* ==========================================
+   K VIBZ — PORTFOLIO PAGE ONLY (portfolio.html)
+   Load AFTER styles.css
+========================================== */
+
+.portfolio-page { display: flex; flex-direction: column; gap: 80px; }
+
+/* ---------- Scroll reveal (needs portfolio.js) ---------- */
+.js .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: var(--delay, 0s);
+}
+.js .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ---------- 1. HERO ---------- */
+.portfolio-hero > * { animation: riseIn 0.9s ease both; }
+.portfolio-hero > :nth-child(1) { animation-delay: 0.05s; }
+.portfolio-hero > :nth-child(2) { animation-delay: 0.2s; }
+.portfolio-hero > :nth-child(3) { animation-delay: 0.35s; }
+.portfolio-hero > :nth-child(4) { animation-delay: 0.5s; }
+
+.portfolio-hero h1 {
+    margin: 14px 0 22px;
+    font-size: clamp(36px, 5vw, 62px);
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+}
+
+.portfolio-stats { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 34px; }
+.portfolio-stats > div {
+    min-width: 150px;
+    padding: 16px 22px;
+    background: rgba(14, 19, 38, 0.6);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+.portfolio-stats strong {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 34px;
+    line-height: 1.1;
+    background: linear-gradient(110deg, #ffffff, var(--purple), var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+.portfolio-stats span { color: var(--muted); font-size: 13px; }
+
+/* ---------- 2. SECTIONS + FILTER ---------- */
+.portfolio-section { display: flex; flex-direction: column; gap: 32px; }
+.section-head h2 {
+    margin: 8px 0 10px;
+    font-size: clamp(28px, 4vw, 40px);
+    letter-spacing: -0.8px;
+}
+
+.filter-bar { display: flex; flex-wrap: wrap; gap: 10px; }
+.filter-btn {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(157, 181, 230, 0.3);
+    border-radius: 999px;
+    color: #c3cbe0;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+.filter-btn:hover { color: white; border-color: var(--purple); transform: translateY(-2px); }
+.filter-btn.active {
+    color: white;
+    background: linear-gradient(120deg, #7650e9, #9762f6 60%, #6178f6);
+    border-color: rgba(213, 198, 255, 0.55);
+    box-shadow: 0 6px 20px rgba(126, 83, 245, 0.35);
+}
+
+/* ---------- 3. PROJECT CARDS ---------- */
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 22px;
+}
+
+.portfolio-page .work-card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    transition: transform 0.35s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.portfolio-page .work-card:hover { transform: translateY(-8px); }
+
+/* Line that grows across the top on hover */
+.work-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--purple), var(--cyan), var(--rose));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s ease;
+}
+.work-card:hover::before { transform: scaleX(1); }
+
+/* The inner box must not draw a second card */
+.portfolio-page .project-feature {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 30px 26px 26px;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+.project-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+
+.project-icon {
+    display: grid;
+    place-items: center;
+    width: 54px; height: 54px;
+    background: linear-gradient(135deg, rgba(155, 109, 255, 0.28), rgba(85, 230, 245, 0.12));
+    border: 1px solid rgba(155, 109, 255, 0.35);
+    border-radius: 15px;
+    color: var(--cyan);
+    font-size: 24px;
+    transition: transform 0.35s ease;
+}
+.work-card:hover .project-icon { transform: rotate(-8deg) scale(1.1); }
+
+.status {
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: 1px solid;
+}
+.status.ongoing   { color: var(--cyan);   border-color: rgba(85, 230, 245, 0.4);  background: rgba(85, 230, 245, 0.08); }
+.status.concept   { color: var(--rose);   border-color: rgba(244, 114, 182, 0.4); background: rgba(244, 114, 182, 0.08); }
+.status.upcoming  { color: var(--purple); border-color: rgba(155, 109, 255, 0.45); background: rgba(155, 109, 255, 0.1); }
+
+.project-feature h3 { font-size: 22px; }
+.project-feature p { color: var(--muted); font-size: 14.5px; line-height: 1.8; }
+.project-feature p strong { color: var(--text); }
+
+.project-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.project-chips span {
+    padding: 5px 12px;
+    background: rgba(155, 109, 255, 0.1);
+    border: 1px solid rgba(155, 109, 255, 0.28);
+    border-radius: 999px;
+    color: #dfe4fa;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.project-feature .btn { margin-top: auto; align-self: flex-start; }
+.project-feature .project-chips + .btn,
+.project-feature p + .btn { margin-top: 8px; }
+
+.work-card.is-hidden { display: none; }
+
+/* ---------- 4. JOURNEY TIMELINE ---------- */
+.timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding-left: 34px;
+}
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 7px; top: 6px; bottom: 6px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--purple), var(--cyan), var(--rose));
+    opacity: 0.6;
+}
+.time-item {
+    position: relative;
+    padding: 22px 24px;
+    background: rgba(14, 19, 38, 0.6);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.time-item:hover { border-color: rgba(155, 109, 255, 0.5); transform: translateX(6px); }
+.time-item::before {
+    content: "";
+    position: absolute;
+    left: -34px; top: 28px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--cyan);
+    box-shadow: 0 0 12px rgba(85, 230, 245, 0.5);
+}
+.time-item small { color: var(--cyan); font-size: 12px; font-weight: 700; letter-spacing: 1.5px; }
+.time-item h3 { margin: 4px 0 6px; font-size: 19px; }
+.time-item p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+
+/* ---------- 5. PROCESS ---------- */
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.step {
+    position: relative;
+    padding: 28px 24px;
+    background: rgba(14, 19, 38, 0.6);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.step:hover { transform: translateY(-6px); border-color: rgba(155, 109, 255, 0.5); }
+.step:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    top: 50%; right: -17px;
+    z-index: 2;
+    transform: translateY(-50%);
+    color: var(--cyan);
+    font-size: 18px;
+}
+.step-number {
+    display: block;
+    margin-bottom: 10px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(110deg, var(--purple), var(--cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+.step h3 { margin-bottom: 6px; font-size: 19px; }
+.step p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+
+/* ---------- 6. CTA ---------- */
+.portfolio-cta {
+    padding: 44px 34px;
+    text-align: center;
+    background:
+        radial-gradient(ellipse at 15% 15%, rgba(155, 109, 255, 0.18), transparent 55%),
+        radial-gradient(ellipse at 90% 90%, rgba(244, 114, 182, 0.1), transparent 50%),
+        rgba(14, 19, 38, 0.75);
+}
+.portfolio-cta h2 { margin-bottom: 14px; font-size: clamp(26px, 4vw, 38px); letter-spacing: -0.6px; }
+.portfolio-cta p { max-width: 640px; margin: 0 auto; color: var(--muted); font-size: 15.5px; line-height: 1.9; }
+.cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 28px; }
+
+/* ---------- 7. ANIMATION + REDUCED MOTION ---------- */
+@keyframes riseIn {
+    from { opacity: 0; transform: translateY(26px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .portfolio-hero > * { animation: none; }
+    .js .reveal { opacity: 1; transform: none; }
+}
+
+/* ---------- 8. TABLETS AND PHONES ---------- */
+@media (max-width: 1100px) { .step:not(:last-child)::after { display: none; } }
+@media (max-width: 900px)  { .portfolio-page { gap: 64px; } }
+@media (max-width: 600px) {
+    .portfolio-stats > div { flex: 1 1 100%; }
+    .work-grid { grid-template-columns: 1fr; }
+    .portfolio-cta { padding: 32px 22px; }
+    .cta-buttons .btn { flex: 1 1 100%; }
+    .timeline { padding-left: 28px; }
+    .time-item::before { left: -28px; }
+}
+
+/* ==========================================
+   K VIBZ MUSIC STUDIO — AUDIO CARDS
+========================================== */
+
+.music-studio-section {
+  position: relative;
+}
+
+/* Intro banner */
+
+.music-intro {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 26px;
+  background:
+    linear-gradient(110deg,
+      rgba(155,109,255,0.15),
+      rgba(85,230,245,0.06));
+  border: 1px solid rgba(155,109,255,0.25);
+  border-radius: 18px;
+}
+
+.music-intro-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 55px;
+  height: 55px;
+  border-radius: 16px;
+  background: linear-gradient(135deg,#9162ff,#4ccde7);
+  color: white;
+  font-size: 30px;
+  box-shadow: 0 8px 25px rgba(120,85,240,0.25);
+}
+
+.music-intro h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.music-intro p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.studio-label {
+  margin-left: auto;
+  padding: 7px 12px;
+  border: 1px solid rgba(85,230,245,0.25);
+  border-radius: 30px;
+  color: var(--cyan);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* Audio grid */
+
+.audio-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 24px;
+}
+
+.portfolio-page .audio-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: linear-gradient(
+    145deg,
+    rgba(19,24,47,0.98),
+    rgba(9,13,29,0.98)
+  );
+  border: 1px solid rgba(157,181,230,0.16);
+  border-radius: 20px;
+  transition: transform 0.35s ease, border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.portfolio-page .audio-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(155,109,255,0.55);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.3);
+}
+
+/* Unique track artwork */
+
+.audio-artwork {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 190px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.audio-artwork::before,
+.audio-artwork::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+}
+
+.audio-artwork::before {
+  width: 210px;
+  height: 210px;
+}
+
+.audio-artwork::after {
+  width: 155px;
+  height: 155px;
+}
+
+.artwork-one {
+  background: radial-gradient(circle at 70% 20%,#6242a7,#21194b 55%,#0c1026);
+}
+
+.artwork-two {
+  background: radial-gradient(circle at 30% 20%,#a04f81,#47234f 55%,#11152e);
+}
+
+.artwork-three {
+  background: radial-gradient(circle at 70% 20%,#278a9a,#163b67 55%,#10172d);
+}
+
+.artwork-four {
+  background: radial-gradient(circle at 30% 20%,#a16b32,#51305e 55%,#10142c);
+}
+
+.track-number {
+  position: absolute;
+  top: 17px;
+  left: 19px;
+  color: rgba(255,255,255,0.75);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.sound-symbol {
+  color: white;
+  font-size: 82px;
+  font-weight: 300;
+  text-shadow: 0 5px 30px rgba(255,255,255,0.2);
+  animation: musicFloat 3s ease-in-out infinite;
+}
+
+.artwork-caption {
+  position: absolute;
+  right: 18px;
+  bottom: 17px;
+  color: rgba(255,255,255,0.7);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+@keyframes musicFloat {
+  0%,100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-7px) scale(1.06); }
+}
+
+/* Audio details */
+
+.audio-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 13px;
+  padding: 23px;
+}
+
+.audio-meta {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--cyan);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+}
+
+.audio-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--purple);
+}
+
+.audio-info h3 {
+  color: var(--text);
+  font-size: 23px;
+  letter-spacing: -0.5px;
+}
+
+.audio-info > p {
+  min-height: 48px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* Native audio player */
+
+.portfolio-audio {
+  display: block;
+  width: 100%;
+  height: 42px;
+  margin-top: 5px;
+  border-radius: 30px;
+  accent-color: #9b6dff;
+}
+
+.audio-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(157,181,230,0.12);
+  color: #8993ae;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* Bottom studio note */
+
+.studio-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.studio-note span {
+  color: var(--cyan);
+  font-size: 20px;
+}
+
+/* Responsive layout */
+
+@media (max-width: 700px) {
+  .audio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .music-intro {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 19px;
+  }
+
+  .studio-label {
+    margin-left: 73px;
+  }
+
+  .audio-artwork {
+    min-height: 175px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sound-symbol {
+    animation: none;
+  }
+}
+
+/* GOOGLE DRIVE MUSIC PLAYERS */
+
+.drive-audio-player {
+  display: block;
+  width: 100%;
+  height: 90px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  margin-top: 18px;
+}
