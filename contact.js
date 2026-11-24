@@ -1,146 +1,340 @@
+
 /* ==========================================
-   K VIBZ — CONTACT PAGE SCRIPT (contact.html only)
-   Your WhatsApp / email are set in config.js
+   K VIBZ — CONTACT PAGE JAVASCRIPT
+   EmailJS Direct Email Integration
 ========================================== */
 
 (function () {
   'use strict';
 
-  var CFG = window.KV_CONFIG || {};
-  var whatsapp = String(CFG.whatsapp || '').replace(/\D/g, '');
-  var email = String(CFG.email || '').trim();
-  var instagram = String(CFG.instagram || '').replace('@', '').trim();
+  /* 1. EMAILJS CONFIGURATION */
 
-  var form = document.getElementById('contactForm');
-  if (!form) return;
-
-  var nameEl = document.getElementById('cName');
-  var contactEl = document.getElementById('cContact');
-  var topicEl = document.getElementById('cTopic');
-  var msgEl = document.getElementById('cMessage');
-  var countEl = document.getElementById('cCount');
-  var statusEl = document.getElementById('ctStatus');
-  var waBtn = document.getElementById('sendWhatsApp');
-  var mailBtn = document.getElementById('sendEmail');
-  var copyBtn = document.getElementById('copyMsg');
-  var setupEl = document.getElementById('ctSetup');
-  var methods = document.getElementById('methods');
-
-  var TOPICS = {
-    music: 'Music & collaboration',
-    hair: 'Hairdressing',
-    business: 'Opportunities & projects',
-    hello: 'Just saying hello'
+  const EMAILJS_CONFIG = {
+    serviceID: 'service_ip8195f',
+    templateID: 'template_c9dxfm9',
+    publicKey: 'ZwtE7GzXs8zPGm08n'
   };
 
-  /* ---------- 1. Show only the contact methods you have set up ---------- */
+  /* 2. YOUR CONTACT DETAILS */
 
-  function addMethod(icon, label, html) {
-    var d = document.createElement('div');
-    d.className = 'ct-method';
-    d.innerHTML = '<span class="ct-icon">' + icon + '</span><div><small>' + label + '</small>' + html + '</div>';
-    methods.appendChild(d);
+  const CONTACT = {
+    whatsapp: '0795169743',
+    email: 'habinezakevin761@gmail.com',
+    instagram: 'k_vibe.rw'
+  };
+
+  /* 3. SCROLL REVEAL ANIMATION */
+
+  const revealItems = document.querySelectorAll('.contact-page .reveal');
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach((item) => observer.observe(item));
+  } else {
+    revealItems.forEach((item) => item.classList.add('visible'));
   }
 
-  if (whatsapp) addMethod('💬', 'WHATSAPP', '<a href="https://wa.me/' + whatsapp + '" target="_blank" rel="noopener"><strong>Chat with me</strong></a>');
-  if (email) addMethod('✉️', 'EMAIL', '<a href="mailto:' + encodeURI(email) + '"><strong>' + email.replace(/</g, '&lt;') + '</strong></a>');
-  if (instagram) addMethod('📸', 'INSTAGRAM', '<a href="https://instagram.com/' + encodeURIComponent(instagram) + '" target="_blank" rel="noopener"><strong>@' + instagram.replace(/</g, '&lt;') + '</strong></a>');
+  /* 4. CONTACT CHANNELS */
 
-  if (whatsapp) waBtn.hidden = false;
-  if (email) mailBtn.hidden = false;
+  function setChannel(id, url, enabled) {
+    const element = document.getElementById(id);
+    if (!element) return;
 
-  var isLocal = window.location.protocol === 'file:' || /^(localhost|127\.)/.test(window.location.hostname);
-  if (!whatsapp && !email && isLocal) setupEl.hidden = false;
-
-  /* ---------- 2. Pre-select the topic from the link (?topic=hair) ---------- */
-
-  try {
-    var wanted = new URLSearchParams(window.location.search).get('topic');
-    if (wanted && TOPICS[wanted]) topicEl.value = wanted;
-  } catch (e) {}
-
-  /* ---------- 3. Character counter ---------- */
-
-  function updateCount() { countEl.textContent = msgEl.value.length + ' / 500'; }
-  msgEl.addEventListener('input', function () {
-    updateCount();
-    showError(msgEl, '');
-  });
-  nameEl.addEventListener('input', function () { showError(nameEl, ''); });
-  updateCount();
-
-  /* ---------- 4. Checking the form ---------- */
-
-  function showError(field, text) {
-    var p = form.querySelector('.ct-error[data-for="' + field.id + '"]');
-    if (p) p.textContent = text;
-    field.classList.toggle('has-error', !!text);
-  }
-
-  function valid() {
-    var ok = true;
-    if (nameEl.value.trim().length < 2) { showError(nameEl, 'Please tell me your name.'); ok = false; }
-    if (msgEl.value.trim().length < 10) { showError(msgEl, 'Please write at least 10 characters.'); ok = false; }
-    if (!ok) {
-      setStatus('', '');
-      var first = form.querySelector('.has-error');
-      if (first) first.focus();
+    if (enabled) {
+      element.href = url;
+      element.hidden = false;
+    } else {
+      element.hidden = true;
     }
-    return ok;
   }
+
+  const whatsappNumber = CONTACT.whatsapp.replace(/\D/g, '');
+  const instagramName = CONTACT.instagram.replace(/^@/, '').trim();
+
+  setChannel(
+    'ch-whatsapp',
+    'https://wa.me/' + whatsappNumber,
+    whatsappNumber.length > 0
+  );
+
+  setChannel(
+    'ch-email',
+    'mailto:' + CONTACT.email.trim(),
+    CONTACT.email.trim().length > 0
+  );
+
+  setChannel(
+    'ch-instagram',
+    'https://instagram.com/' + encodeURIComponent(instagramName),
+    instagramName.length > 0
+  );
+
+  /* 5. FORM ELEMENTS */
+
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  const message = document.getElementById('message');
+  const counter = document.getElementById('msg-count');
+
+  const result = document.getElementById('form-result');
+  const resultTitle = document.getElementById('result-title');
+  const resultNote = document.getElementById('result-note');
+  const resultText = document.getElementById('result-text');
+
+  const copyButton = document.getElementById('copy-btn');
+  const submitButton = form.querySelector('[type="submit"]');
+
+  let preparedMessage = '';
+  const MAX = 600;
+
+  /* 6. CHARACTER COUNTER */
+
+  function updateCounter() {
+    if (!message || !counter) return;
+
+    const count = message.value.length;
+    counter.textContent = count + ' / ' + MAX;
+    counter.style.color = count >= MAX ? '#ff8b94' : '';
+  }
+
+  if (message) {
+    message.addEventListener('input', updateCounter);
+    updateCounter();
+  }
+
+  /* 7. VALIDATION */
+
+  function clearErrors() {
+    form.querySelectorAll('.invalid').forEach((field) => {
+      field.classList.remove('invalid');
+    });
+
+    form.querySelectorAll('.field-error').forEach((error) => {
+      error.textContent = '';
+    });
+  }
+
+  function showError(field, messageText) {
+    field.classList.add('invalid');
+
+    const error = document.getElementById('err-' + field.name);
+
+    if (error) {
+      error.textContent = messageText;
+    }
+  }
+
+  function validateForm() {
+    clearErrors();
+
+    let valid = true;
+
+    const name = form.elements.name;
+    const email = form.elements.email;
+
+    const selectedSubject =
+      form.querySelector('input[name="subject"]:checked');
+
+    if (name.value.trim().length < 2) {
+      showError(name, 'Please enter your name.');
+      valid = false;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(email.value.trim())) {
+      showError(email, 'Please enter a valid email address.');
+      valid = false;
+    }
+
+    if (!selectedSubject) {
+      const subjectError = document.getElementById('err-subject');
+      if (subjectError) {
+        subjectError.textContent = 'Please choose a subject.';
+      }
+      valid = false;
+    }
+
+    if (message.value.trim().length < 10) {
+      showError(message, 'Your message must contain at least 10 characters.');
+      valid = false;
+    }
+
+    return valid;
+  }
+
+  form.addEventListener('input', (event) => {
+    const field = event.target;
+    field.classList.remove('invalid');
+
+    const error = document.getElementById('err-' + field.name);
+
+    if (error) {
+      error.textContent = '';
+    }
+  });
+
+  /* 8. PREPARE MESSAGE */
 
   function buildMessage() {
-    var lines = [
-      'Hello Kevin 👋',
-      'My name is ' + nameEl.value.trim() + '.',
-      'Topic: ' + TOPICS[topicEl.value],
-      '',
-      msgEl.value.trim()
-    ];
-    if (contactEl.value.trim()) lines.push('', 'You can reach me on: ' + contactEl.value.trim());
-    return lines.join('\n');
+    const name = form.elements.name.value.trim();
+    const email = form.elements.email.value.trim();
+
+    const subject =
+      form.querySelector('input[name="subject"]:checked').value;
+
+    const content = message.value.trim();
+
+    return (
+      'Hello Kevin, my name is ' + name + '.\n\n' +
+      'Subject: ' + subject + '\n\n' +
+      content + '\n\n' +
+      'My email: ' + email + '\n\n' +
+      'Sent through the K VIBZ portfolio website.'
+    );
   }
 
-  function setStatus(text, kind) {
-    statusEl.textContent = text;
-    statusEl.className = 'ct-status' + (kind ? ' ' + kind : '');
+  /* 9. SHOW RESULT */
+
+  function showResult(title, note, text) {
+    resultTitle.textContent = title;
+    resultNote.textContent = note;
+    resultText.textContent = text;
+
+    result.hidden = false;
+    copyButton.textContent = 'Copy message';
+
+    result.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest'
+    });
   }
 
-  /* ---------- 5. The three buttons ---------- */
+  /* 10. SEND MESSAGE DIRECTLY TO YOUR EMAIL */
 
-  waBtn.addEventListener('click', function () {
-    if (!valid()) return;
-    window.open('https://wa.me/' + whatsapp + '?text=' + encodeURIComponent(buildMessage()), '_blank', 'noopener');
-    setStatus('Opening WhatsApp with your message… 💜', 'ok');
-  });
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
 
-  mailBtn.addEventListener('click', function () {
-    if (!valid()) return;
-    var subject = 'K VIBZ: ' + TOPICS[topicEl.value];
-    window.location.href = 'mailto:' + encodeURI(email) + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(buildMessage());
-    setStatus('Opening your email app… 💜', 'ok');
-  });
+    if (!validateForm()) {
+      const firstError =
+        form.querySelector('.invalid') ||
+        document.getElementById('err-subject');
 
-  copyBtn.addEventListener('click', function () {
-    if (!valid()) return;
-    var text = buildMessage();
-    function done() { setStatus('Message copied ✔ Now paste it in WhatsApp, email or Instagram.', 'ok'); }
-    function fallback() {
-      var t = document.createElement('textarea');
-      t.value = text;
-      t.style.position = 'fixed';
-      t.style.opacity = '0';
-      document.body.appendChild(t);
-      t.select();
-      try { document.execCommand('copy'); done(); } catch (e) { setStatus('Could not copy. Please select the text and copy it yourself.', 'bad'); }
-      t.remove();
+      if (firstError) {
+        firstError.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }
+
+      return;
     }
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(done, fallback);
-    } else {
-      fallback();
+
+    if (typeof emailjs === 'undefined') {
+      showResult(
+        'Connection problem',
+        'Email service could not load. Please try again later.',
+        'Your message has not been sent. You can copy it below.'
+      );
+      preparedMessage = buildMessage();
+      return;
+    }
+
+    preparedMessage = buildMessage();
+
+    const selectedSubject =
+      form.querySelector('input[name="subject"]:checked').value;
+
+    const templateParams = {
+      from_name: form.elements.name.value.trim(),
+      from_email: form.elements.email.value.trim(),
+      subject: selectedSubject,
+      message: message.value.trim()
+    };
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+    }
+
+    try {
+      await emailjs.send(
+        EMAILJS_CONFIG.serviceID,
+        EMAILJS_CONFIG.templateID,
+        templateParams
+      );
+
+      showResult(
+        'Message sent successfully!',
+        'Thank you for contacting K VIBZ. Your message has been delivered to my inbox.',
+        preparedMessage
+      );
+
+      form.reset();
+      updateCounter();
+      clearErrors();
+
+    } catch (error) {
+      console.error('EmailJS error:', error);
+
+      showResult(
+        'Message not sent',
+        'Something went wrong. Please try again or contact me through WhatsApp or email.',
+        preparedMessage
+      );
+
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send Message';
+      }
     }
   });
 
-  form.addEventListener('submit', function (e) { e.preventDefault(); });
+  /* 11. COPY MESSAGE */
+
+  if (copyButton) {
+    copyButton.addEventListener('click', async () => {
+      if (!preparedMessage) return;
+
+      try {
+        await navigator.clipboard.writeText(preparedMessage);
+        copyButton.textContent = 'Copied successfully ✓';
+
+      } catch (error) {
+        const temporary = document.createElement('textarea');
+
+        temporary.value = preparedMessage;
+        temporary.style.position = 'fixed';
+        temporary.style.opacity = '0';
+
+        document.body.appendChild(temporary);
+        temporary.select();
+
+        const copied = document.execCommand('copy');
+        temporary.remove();
+
+        copyButton.textContent =
+          copied ? 'Copied successfully ✓' : 'Please copy manually';
+      }
+    });
+  }
+
+  /* 12. INITIALIZE EMAILJS */
+
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init({
+      publicKey: EMAILJS_CONFIG.publicKey
+    });
+  }
+
 })();
