@@ -4,18 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#05060f">
+
   <title>K VIBZ | Habineza Kevin</title>
+
   <meta name="description" content="The creative portfolio of Habineza Kevin, K VIBZ — student, music producer and creative learner.">
+
+  <!-- Website logo and browser icon -->
+  <link rel="icon" type="image/png" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="chatbox.css">
   <link rel="stylesheet" href="extras.css">
 </head>
+
 <body>
   <header class="site-header">
-    <!-- Left: logo -->
-    <a href="index.html" class="brand">K <span>VIBZ</span><i>.</i></a>
 
-    <!-- Middle: moving words in a frame (edit the words here) -->
+    <!-- Left: Logo image -->
+    <a href="index.html" class="brand">
+      <img src="apple-touch-icon.png" alt="K VIBZ Logo" class="brand-logo">
+    </a>
+
+    <!-- Moving words -->
     <div class="header-ticker" aria-hidden="true">
       <span class="ticker-dot"></span>
       <div class="ticker-window">
@@ -31,12 +43,12 @@
       </div>
     </div>
 
-    <!-- Menu button (shows on phones and tablets) -->
+    <!-- Mobile menu -->
     <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
 
-    <!-- Right: page buttons -->
+    <!-- Navigation -->
     <nav class="navigation">
       <a href="index.html" class="active">Welcome</a>
       <a href="home.html">Home</a>
@@ -49,12 +61,15 @@
 
   <main class="welcome-layout">
     <section class="welcome-copy">
+
       <p class="eyebrow">STUDENT · CREATOR · DREAMER</p>
+
       <h1 class="welcome-title">
         Welcome to<br>
         Habineza Kevin's<br>
         <span class="gradient-text">E-Portfolio.</span>
       </h1>
+
       <p class="welcome-description">
         Every skill tells a story. Every idea has a purpose.
         Welcome to my world of learning, music, creativity
@@ -116,9 +131,11 @@
     <p>LEARN. CREATE. GROW.</p>
   </footer>
 
+  <!-- Scripts -->
   <script src="config.js"></script>
   <script src="script.js"></script>
   <script src="chatbox.js"></script>
   <script src="extras.js"></script>
+
 </body>
 </html>
