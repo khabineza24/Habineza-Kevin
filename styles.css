@@ -972,3 +972,17 @@ button:focus-visible {
     background: rgba(155, 109, 255, 0.35);
     transform: translateY(-3px);
 }
+/* K VIBZ Website Logo */
+.brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.brand-logo {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    display: block;
+    border-radius: 8px;
+}
