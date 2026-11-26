@@ -662,7 +662,7 @@
   ]);
 
   T('bestie', /\b(besto|bestie|friend)\b/, [
-    'May u Guess 💜💜💜💜 very beautiful!'
+    'Uwase zawad 💜 very beautiful!'
   ]);
 
   T('bye', /\b(bye|goodbye|see you|cya|gotta go|good night|goodnight|ciao|murabeho)\b/, [
